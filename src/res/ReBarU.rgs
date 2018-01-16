@@ -1,0 +1,43 @@
+HKCR
+{
+	TBarCtlsU.ReBar.1 = s 'TimoSoft ReBar Control 1.3 (Unicode)'
+	{
+		CLSID = s '{13220297-7371-4a05-A1DD-BF3205B19CFD}'
+		'Insertable'
+	}
+	TBarCtlsU.ReBar = s 'TimoSoft ReBar Control 1.3 (Unicode)'
+	{
+		CLSID = s '{13220297-7371-4a05-A1DD-BF3205B19CFD}'
+		CurVer = s 'TBarCtlsU.ReBar.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {13220297-7371-4a05-A1DD-BF3205B19CFD} = s 'TimoSoft ReBar Control 1.3 (Unicode)'
+		{
+			ProgID = s 'TBarCtlsU.ReBar.1'
+			VersionIndependentProgID = s 'TBarCtlsU.ReBar'
+			ForceRemove 'Programmable'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove 'Implemented Categories'
+			{
+				'{40FC6ED4-2438-11CF-A3DB-080036F12502}'
+				'{40FC6ED5-2438-11CF-A3DB-080036F12502}'
+				'{0DE86A57-2BAA-11CF-A229-00AA003D7352}'
+				'{0DE86A53-2BAA-11CF-A229-00AA003D7352}'
+			}
+			val AppID = s '%APPID%'
+			ForceRemove 'Control'
+			ForceRemove 'Insertable'
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 1'
+			'MiscStatus' = s '0'
+			{
+				'1' = s '%OLEMISC%'
+			}
+			'TypeLib' = s '{5D0D0ABC-4898-4e46-AB48-291074A737A1}'
+			'Version' = s '1.3'
+		}
+	}
+}

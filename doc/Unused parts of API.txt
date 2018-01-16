@@ -1,0 +1,168 @@
+The following parts of the ReBarWindow32 API (Windows 10) are not used:
+
+Control styles:
+---------------
+- RBS_TOOLTIPS (https://msdn.microsoft.com/en-us/library/bb774377.aspx)
+	-> not implemented in comctl32.dll 6.10
+
+Messages:
+---------
+- RB_GETTOOLTIPS (https://msdn.microsoft.com/en-us/library/bb774477.aspx)
+	-> not implemented in comctl32.dll 6.10
+- RB_GETUNICODEFORMAT (https://msdn.microsoft.com/en-us/library/bb774492.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+- RB_SETBANDWIDTH (https://msdn.microsoft.com/en-us/library/bb774511.aspx)
+	-> requires comctl32.dll 6.10 or newer
+	-> we achieve the same functionality with RB_SETBANDINFO
+- RB_SETTOOLTIPS (https://msdn.microsoft.com/en-us/library/bb774526.aspx)
+	-> not implemented in comctl32.dll 6.10
+- RB_SETUNICODEFORMAT (https://msdn.microsoft.com/en-us/library/bb774528.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+- RB_SETWINDOWTHEME (https://msdn.microsoft.com/en-us/library/bb774530.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+
+Notifications:
+--------------
+- RBN_DELETEDBAND (https://msdn.microsoft.com/en-us/library/bb774413.aspx)
+	-> not needed
+
+
+
+The following parts of the ToolbarWindow32 API (Windows 10) are not used:
+
+Messages:
+---------
+- TB_ADDBITMAP (https://msdn.microsoft.com/en-us/library/bb787289.aspx)
+	-> there's no real benefit over using image lists, which also support adding images on the fly
+	-> can be used rather easily via SendMessage()
+- TB_ADDSTRING (https://msdn.microsoft.com/en-us/library/bb787293.aspx)
+	-> supporting the concept of string pools would complicate the COM interface alot
+- TB_CHANGEBITMAP (https://msdn.microsoft.com/en-us/library/bb787301.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_SETBUTTONINFO
+- TB_CHECKBUTTON (https://msdn.microsoft.com/en-us/library/bb787303.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_SETBUTTONINFO
+- TB_GETBITMAP (https://msdn.microsoft.com/en-us/library/bb787315.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_GETRECT (https://msdn.microsoft.com/en-us/library/bb787346.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETITEMRECT
+- TB_GETSTATE (https://msdn.microsoft.com/en-us/library/bb787348.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_GETSTRING (https://msdn.microsoft.com/en-us/library/bb787349.aspx)
+	-> supporting the concept of string pools would complicate the COM interface alot
+- TB_GETSTYLE (https://msdn.microsoft.com/en-us/library/bb787350.aspx)
+	-> we achieve the same functionality with GetWindowLong
+- TB_GETUNICODEFORMAT (https://msdn.microsoft.com/en-us/library/bb787356.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+- TB_HIDEBUTTON (https://msdn.microsoft.com/en-us/library/bb787358.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_SETBUTTONINFO
+- TB_INDETERMINATE (https://msdn.microsoft.com/en-us/library/bb787362.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_SETBUTTONINFO
+- TB_ISBUTTONCHECKED (https://msdn.microsoft.com/en-us/library/bb787368.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_ISBUTTONENABLED (https://msdn.microsoft.com/en-us/library/bb787370.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_ISBUTTONHIDDEN (https://msdn.microsoft.com/en-us/library/bb787372.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_ISBUTTONHIGHLIGHTED (https://msdn.microsoft.com/en-us/library/bb787374.aspx)
+	-> checks TBSTATE_MARKED
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_ISBUTTONINDETERMINATE (https://msdn.microsoft.com/en-us/library/bb787377.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_ISBUTTONPRESSED (https://msdn.microsoft.com/en-us/library/bb787379.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_GETBUTTONINFO
+- TB_MARKBUTTON (https://msdn.microsoft.com/en-us/library/bb787385.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_SETBUTTONINFO
+- TB_PRESSBUTTON (https://msdn.microsoft.com/en-us/library/bb787389.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_SETBUTTONINFO
+- TB_REPLACEBITMAP (https://msdn.microsoft.com/en-us/library/bb787391.aspx)
+	-> there's no real benefit over using image lists, which also support replacing images on the fly
+	-> can be used rather easily via SendMessage()
+- TB_SETBITMAPSIZE (https://msdn.microsoft.com/en-us/library/bb787398.aspx)
+	-> not needed, because we don't use the TB_ADDBITMAP message
+- TB_SETSTATE (https://msdn.microsoft.com/en-us/library/bb787457.aspx)
+	-> works with command identifiers and therefore is not applicable
+	-> we achieve the same functionality with TB_SETBUTTONINFO
+- TB_SETSTYLE (https://msdn.microsoft.com/en-us/library/bb787459.aspx)
+	-> we achieve the same functionality with SetWindowLong
+- TB_SETUNICODEFORMAT (https://msdn.microsoft.com/en-us/library/bb787463.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+- TB_SETWINDOWTHEME (https://msdn.microsoft.com/en-us/library/bb787465.aspx)
+	-> not needed
+	-> can be used easily via SendMessage()
+- TB_TRANSLATEACCELERATOR (https://msdn.microsoft.com/en-us/library/cc811779.aspx)
+	-> there's no real benefit, especially since it doesn't do anything if the control does not have the keyboard focus
+
+Notifications:
+--------------
+- TBN_DRAGOVER (https://msdn.microsoft.com/en-us/library/cc835028.aspx)
+	-> can mark the button currently under the mouse during OLE drag'n'drop
+	-> not very flexible, because it is not possible to change the button that gets highlighted
+	-> client apps can as well mark the button themselves
+- NM_CHAR
+	-> Attention: returning TRUE will abort processing the keypress
+- TBN_ENDDRAG
+- TBN_DRAGOUT
+
+- Flags:
+--------
+- CMB_MASKED (https://msdn.microsoft.com/de-de/library/bb787467.aspx)
+	-> not needed, because we don't use the CreateMappedBitmap function
+- TBMF_BARPAD (https://msdn.microsoft.com/en-us/library/bb760482.aspx)
+	-> requires comctl32.dll 6.0 or newer
+	-> "Although values for cxBarPad and cyBarPad can be set and retrieved they currently have no effect and are not used."
+- TBMF_PAD (https://msdn.microsoft.com/en-us/library/bb760482.aspx)
+	-> requires comctl32.dll 6.0 or newer
+	-> We use TB_[G|S]ETPADDING instead
+
+Structures:
+-----------
+- COLORMAP (https://msdn.microsoft.com/de-de/library/bb787467.aspx)
+	-> not needed, because we don't use the CreateMappedBitmap function
+- TBADDBITMAP (https://msdn.microsoft.com/en-us/library/bb760475.aspx)
+	-> we don't use the TB_ADDBITMAP message
+- TBMETRICS::cxBarPad (https://msdn.microsoft.com/en-us/library/bb760482.aspx)
+	-> requires comctl32.dll 6.0 or newer
+	-> "Although values for cxBarPad and cyBarPad can be set and retrieved they currently have no effect and are not used."
+- TBMETRICS::cyBarPad (https://msdn.microsoft.com/en-us/library/bb760482.aspx)
+	-> requires comctl32.dll 6.0 or newer
+	-> "Although values for cxBarPad and cyBarPad can be set and retrieved they currently have no effect and are not used."
+- TBMETRICS::cxPad (https://msdn.microsoft.com/en-us/library/bb760482.aspx)
+	-> requires comctl32.dll 6.0 or newer
+	-> We use TB_[G|S]ETPADDING instead
+- TBMETRICS::cyPad (https://msdn.microsoft.com/en-us/library/bb760482.aspx)
+	-> requires comctl32.dll 6.0 or newer
+	-> We use TB_[G|S]ETPADDING instead
+- NMTBCUSTOMDRAW::hbrMonoDither (https://msdn.microsoft.com/en-us/library/bb760450.aspx)
+	-> use is not clear
+- NMTBCUSTOMDRAW::hbrLines (https://msdn.microsoft.com/en-us/library/bb760450.aspx)
+	-> does not seem to be used by Windows
+- NMTBCUSTOMDRAW::hpenLines (https://msdn.microsoft.com/en-us/library/bb760450.aspx)
+	-> does not seem to be used by Windows
+- TBREPLACEBITMAP (https://msdn.microsoft.com/en-us/library/bb760484.aspx)
+	-> we don't use the TB_REPLACEBITMAP message
+
+Functions:
+----------
+- CreateMappedBitmap (https://msdn.microsoft.com/de-de/library/bb787467.aspx)
+	-> not needed, because we don't use the TB_ADDBITMAP message
+	-> can be used easily independently of ToolBar control

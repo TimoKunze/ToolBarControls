@@ -1,0 +1,25 @@
+HKCR
+{
+	TBarCtlsA.ControlHostWindow.1 = s 'TimoSoft ControlHostWindow Class 1.3 (ANSI)'
+	{
+		CLSID = s '{B6306994-7ECD-4CBC-AD3A-C073DC941916}'
+	}
+	TBarCtlsA.ControlHostWindow = s 'TimoSoft ControlHostWindow Class (ANSI)'
+	{
+		CLSID = s '{B6306994-7ECD-4CBC-AD3A-C073DC941916}'
+		CurVer = s 'TBarCtlsA.ControlHostWindow.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {B6306994-7ECD-4CBC-AD3A-C073DC941916} = s 'TimoSoft ControlHostWindow Class (ANSI)'
+		{
+			ProgID = s 'TBarCtlsA.ControlHostWindow.1'
+			VersionIndependentProgID = s 'TBarCtlsA.ControlHostWindow'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{C5AB19C0-2E5A-4097-91EF-61EFA3AC27E7}'
+		}
+	}
+}

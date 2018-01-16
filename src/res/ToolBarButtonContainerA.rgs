@@ -1,0 +1,25 @@
+HKCR
+{
+	TBarCtlsA.ToolBarButtonContainer.1 = s 'TimoSoft ToolBarButtonContainer Class 1.3 (ANSI)'
+	{
+		CLSID = s '{136209FB-5EDD-4C3B-B6CB-D0619A93E219}'
+	}
+	TBarCtlsA.ToolBarButtonContainer = s 'TimoSoft ToolBarButtonContainer Class (ANSI)'
+	{
+		CLSID = s '{136209FB-5EDD-4C3B-B6CB-D0619A93E219}'
+		CurVer = s 'TBarCtlsA.ToolBarButtonContainer.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {136209FB-5EDD-4C3B-B6CB-D0619A93E219} = s 'TimoSoft ToolBarButtonContainer Class (ANSI)'
+		{
+			ProgID = s 'TBarCtlsA.ToolBarButtonContainer.1'
+			VersionIndependentProgID = s 'TBarCtlsA.ToolBarButtonContainer'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{C5AB19C0-2E5A-4097-91EF-61EFA3AC27E7}'
+		}
+	}
+}

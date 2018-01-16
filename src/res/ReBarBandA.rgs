@@ -1,0 +1,25 @@
+HKCR
+{
+	TBarCtlsA.ReBarBand.1 = s 'TimoSoft ReBarBand Class 1.3 (ANSI)'
+	{
+		CLSID = s '{486876B1-8368-4d20-828C-49962D9F54E9}'
+	}
+	TBarCtlsA.ReBarBand = s 'TimoSoft ReBarBand Class (ANSI)'
+	{
+		CLSID = s '{486876B1-8368-4d20-828C-49962D9F54E9}'
+		CurVer = s 'TBarCtlsA.ReBarBand.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {486876B1-8368-4d20-828C-49962D9F54E9} = s 'TimoSoft ReBarBand Class (ANSI)'
+		{
+			ProgID = s 'TBarCtlsA.ReBarBand.1'
+			VersionIndependentProgID = s 'TBarCtlsA.ReBarBand'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{C5AB19C0-2E5A-4097-91EF-61EFA3AC27E7}'
+		}
+	}
+}

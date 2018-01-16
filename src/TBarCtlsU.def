@@ -1,0 +1,9 @@
+; TBarCtlsU.def: Declares the module parameters. (Unicode version)
+
+LIBRARY      "TBarCtlsU.ocx"
+
+EXPORTS
+	DllCanUnloadNow		PRIVATE
+	DllGetClassObject	PRIVATE
+	DllRegisterServer	PRIVATE
+	DllUnregisterServer	PRIVATE

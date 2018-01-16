@@ -1,0 +1,25 @@
+HKCR
+{
+	TBarCtlsA.VirtualToolBarButton.1 = s 'TimoSoft VirtualToolBarButton Class 1.3 (ANSI)'
+	{
+		CLSID = s '{ACF745F4-DFD6-4115-A1B6-F1DFF1C45C78}'
+	}
+	TBarCtlsA.VirtualToolBarButton = s 'TimoSoft VirtualToolBarButton Class (ANSI)'
+	{
+		CLSID = s '{ACF745F4-DFD6-4115-A1B6-F1DFF1C45C78}'
+		CurVer = s 'TBarCtlsA.VirtualToolBarButton.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {ACF745F4-DFD6-4115-A1B6-F1DFF1C45C78} = s 'TimoSoft VirtualToolBarButton Class (ANSI)'
+		{
+			ProgID = s 'TBarCtlsA.VirtualToolBarButton.1'
+			VersionIndependentProgID = s 'TBarCtlsA.VirtualToolBarButton'
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			'TypeLib' = s '{C5AB19C0-2E5A-4097-91EF-61EFA3AC27E7}'
+		}
+	}
+}

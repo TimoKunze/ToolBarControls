@@ -1,0 +1,21 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "TBarCtls", "TBarCtls.vcxproj", "{76DF9F15-59AE-4E0F-BDDD-2285B789135C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug - ANSI|Win32 = Debug - ANSI|Win32
+		Debug - Unicode|Win32 = Debug - Unicode|Win32
+		Release - ANSI|Win32 = Release - ANSI|Win32
+		Release - Unicode|Win32 = Release - Unicode|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{76DF9F15-59AE-4E0F-BDDD-2285B789135C}.Debug - ANSI|Win32.ActiveCfg = Debug - ANSI|Win32
+		{76DF9F15-59AE-4E0F-BDDD-2285B789135C}.Debug - Unicode|Win32.ActiveCfg = Debug - Unicode|Win32
+		{76DF9F15-59AE-4E0F-BDDD-2285B789135C}.Release - ANSI|Win32.ActiveCfg = Release - ANSI|Win32
+		{76DF9F15-59AE-4E0F-BDDD-2285B789135C}.Release - Unicode|Win32.ActiveCfg = Release - Unicode|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

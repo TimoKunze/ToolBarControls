@@ -1,0 +1,333 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#include "winres.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+#ifdef _UNICODE
+  IDB_REBAR               BITMAP                  "ReBarU.bmp"
+  IDB_TOOLBAR             BITMAP                  "ToolBarU.bmp"
+#else
+  IDB_REBAR               BITMAP                  "ReBarA.bmp"
+  IDB_TOOLBAR             BITMAP                  "ToolBarA.bmp"
+#endif
+IDB_TOOLBARENABLED      BITMAP                  "ToolBar enabled.bmp"
+IDB_TOOLBARDISABLED     BITMAP                  "ToolBar disabled.bmp"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// JPG
+//
+
+IDB_ABOUT               JPG                      "About.jpg"
+IDB_PAYPAL              JPG                      "Paypal.jpg"
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION VERSION_MAJOR,VERSION_MINOR,VERSION_REVISION1,VERSION_BUILD
+ PRODUCTVERSION VERSION_MAJOR,VERSION_MINOR,VERSION_REVISION1,VERSION_BUILD
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x4L
+ FILETYPE 0x2L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "Comments", "Designed for Visual Basic. This software is freeware!"
+#ifdef _UNICODE
+            VALUE "FileDescription", "ToolBar ActiveX Controls (Unicode)"
+#else
+            VALUE "FileDescription", "ToolBar ActiveX Controls (ANSI)"
+#endif
+            VALUE "FileVersion", STRFILEVERSION
+#ifdef _UNICODE
+            VALUE "InternalName", "TBarCtlsU.ocx"
+#else
+            VALUE "InternalName", "TBarCtlsA.ocx"
+#endif
+            VALUE "LegalCopyright", "Copyright (C) 2011-2018 Timo ""TimoSoft"" Kunze"
+#ifdef _UNICODE
+            VALUE "OriginalFilename", "TBarCtlsU.ocx"
+#else
+            VALUE "OriginalFilename", "TBarCtlsA.ocx"
+#endif
+            VALUE "ProductName", "TimoSoft ToolBarControls"
+            VALUE "ProductVersion", STRPRODUCTVERSION
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// REGISTRY
+//
+
+#ifdef _UNICODE
+  IDR_TBARCTLS                    REGISTRY                "TBarCtlsU.rgs"
+  IDR_REBAR                       REGISTRY                "ReBarU.rgs"
+  IDR_REBARBAND                   REGISTRY                "ReBarBandU.rgs"
+  IDR_REBARBANDS                  REGISTRY                "ReBarBandsU.rgs"
+  IDR_VIRTUALREBARBAND            REGISTRY                "VirtualReBarBandU.rgs"
+  IDR_TOOLBAR                     REGISTRY                "ToolBarU.rgs"
+  IDR_TOOLBARBUTTON               REGISTRY                "ToolBarButtonU.rgs"
+  IDR_TOOLBARBUTTONCONTAINER      REGISTRY                "ToolBarButtonContainerU.rgs"
+  IDR_TOOLBARBUTTONS              REGISTRY                "ToolBarButtonsU.rgs"
+  IDR_VIRTUALTOOLBARBUTTON        REGISTRY                "VirtualToolBarButtonU.rgs"
+  IDR_OLEDATAOBJECT               REGISTRY                "OLEDataObjectU.rgs"
+  IDR_CONTROLHOSTWINDOW           REGISTRY                "ControlHostWindowU.rgs"
+  IDR_COMMONPROPERTIES            REGISTRY                "CommonPropertiesU.rgs"
+#else
+  IDR_TBARCTLS                    REGISTRY                "TBarCtlsA.rgs"
+  IDR_REBAR                       REGISTRY                "ReBarA.rgs"
+  IDR_REBARBAND                   REGISTRY                "ReBarBandA.rgs"
+  IDR_REBARBANDS                  REGISTRY                "ReBarBandsA.rgs"
+  IDR_VIRTUALREBARBAND            REGISTRY                "VirtualReBarBandA.rgs"
+  IDR_TOOLBAR                     REGISTRY                "ToolBarA.rgs"
+  IDR_TOOLBARBUTTON               REGISTRY                "ToolBarButtonA.rgs"
+  IDR_TOOLBARBUTTONCONTAINER      REGISTRY                "ToolBarButtonContainerA.rgs"
+  IDR_TOOLBARBUTTONS              REGISTRY                "ToolBarButtonsA.rgs"
+  IDR_VIRTUALTOOLBARBUTTON        REGISTRY                "VirtualToolBarButtonA.rgs"
+  IDR_OLEDATAOBJECT               REGISTRY                "OLEDataObjectA.rgs"
+  IDR_CONTROLHOSTWINDOW           REGISTRY                "ControlHostWindowA.rgs"
+  IDR_COMMONPROPERTIES            REGISTRY                "CommonPropertiesA.rgs"
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_ABOUTBOX DIALOGEX 0, 0, 332, 230
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | DS_CENTER | WS_POPUP | WS_CAPTION
+CAPTION "About ToolBarControls..."
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    DEFPUSHBUTTON   "OK",IDOK,275,206,50,14
+    CONTROL         5,IDC_ABOUT,"Static",SS_BITMAP | SS_REALSIZEIMAGE,10,10,132,169,WS_EX_TRANSPARENT
+    LTEXT           "ToolBarControls",IDC_NAME,118,10,207,11,0,WS_EX_TRANSPARENT
+    LTEXT           "<Version>",IDC_VERSION,118,21,207,26,0,WS_EX_TRANSPARENT
+    CONTROL         "Written by:",IDC_AUTHOR,"Static",WS_GROUP | 0x20,118,51,207,11
+    LTEXT           "<Authors>",IDC_AUTHORS,118,62,207,13,0,WS_EX_TRANSPARENT
+    LTEXT           "Thanks go to:",IDC_THANKS,118,82,207,11,0,WS_EX_TRANSPARENT
+    LTEXT           "<Thanks>",IDC_THANKSTO,118,93,207,33,0,WS_EX_TRANSPARENT
+    LTEXT           "Special Thanks go to:",IDC_SPECIALTHANKS,118,133,207,11,0,WS_EX_TRANSPARENT
+    CONTROL         "<SpecialThanks>",IDC_SPECIALTHANKSTO,"Static",WS_GROUP | 0x20,118,144,207,23
+    LTEXT           "Further information:",IDC_MORE,118,181,207,11,0,WS_EX_TRANSPARENT
+    LTEXT           "<Homepage>",IDC_HOMEPAGE,118,192,95,8,SS_NOTIFY,WS_EX_TRANSPARENT
+    LTEXT           "<Bugtracker>",IDC_BUGTRACKER,214,192,50,8,SS_NOTIFY,WS_EX_TRANSPARENT
+    CONTROL         6,IDC_PAYPAL,"Static",SS_BITMAP | SS_NOTIFY | SS_REALSIZEIMAGE,219,204,48,18,WS_EX_TRANSPARENT
+END
+
+IDD_CONTROLHOSTWINDOW DIALOGEX 0, 0, 199, 22
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU | WS_THICKFRAME
+EXSTYLE WS_EX_TOOLWINDOW
+CAPTION ""
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+END
+
+IDD_COMMONPROPERTIES DIALOGEX 0, 0, 271, 136
+STYLE DS_SETFONT | DS_FIXEDSYS | WS_CHILD
+FONT 8, "MS Shell Dlg", 0, 0, 0x1
+BEGIN
+    CONTROL         "&Disabled events:",IDC_STATIC,"Static",WS_GROUP | 0x20,7,7,53,8
+    CONTROL         "",IDC_DISABLEDEVENTSBOX,"SysListView32",LVS_REPORT | LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_BORDER | WS_TABSTOP,7,17,130,114
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "#include ""winres.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+#ifdef UNICODE
+    "1 TYPELIB ""TBarCtlsU.tlb""\r\n"
+#else
+    "1 TYPELIB ""TBarCtlsA.tlb""\r\n"
+#endif
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE 
+BEGIN
+    IDS_LOADSETTINGS        "Load settings from a file..."
+    IDS_SAVESETTINGS        "Save the settings to a file..."
+END
+
+STRINGTABLE 
+BEGIN
+    IDS_TITLECOMMONPROPERTIES "Common"
+    IDS_DOCSTRINGCOMMONPROPERTIES "Common Properties"
+    IDS_PROJNAME            "TBarCtls"
+END
+
+STRINGTABLE 
+BEGIN
+    IDPC_COLORS             "Colors"
+    IDPC_DRAGDROP           "Drag'n'Drop"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_APPEARANCE2D        "%i - 2D"
+    IDP_APPEARANCE3D        "%i - 3D"
+    IDP_APPEARANCE3DLIGHT   "%i - 3D Light"
+    IDP_BACKSTYLETRANSPARENT "%i - Transparent"
+    IDP_BACKSTYLEOPAQUE     "%i - Opaque"
+    IDP_BORDERSTYLENONE     "%i - None"
+    IDP_BORDERSTYLEFIXEDSINGLE "%i - Fixed Single"
+    IDP_BUTTONSTYLE3D       "%i - 3D"
+    IDP_BUTTONSTYLEFLAT     "%i - Flat"
+    IDP_BUTTONTEXTPOSITIONBELOW "%i - Below Icon"
+    IDP_BUTTONTEXTPOSITIONRIGHT "%i - Right to Icon"
+    IDP_DRAGDROPCUSTOMIZATIONMODIFIERKEYSHIFT "%i - [SHIFT]"
+    IDP_DRAGDROPCUSTOMIZATIONMODIFIERKEYALT "%i - [ALT]"
+    IDP_HORIZONTALTEXTALIGNMENTLEFT      "%i - Left"
+    IDP_HORIZONTALTEXTALIGNMENTCENTER    "%i - Center"
+    IDP_HORIZONTALTEXTALIGNMENTRIGHT     "%i - Right"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_MENUBARTHEMENATIVETOOLBAR "%i - Tool Bar"
+    IDP_MENUBARTHEMENATIVEMENUBAR "%i - Menu Bar"
+    IDP_MOUSEPOINTERDEFAULT "%i - Default"
+    IDP_MOUSEPOINTERARROW   "%i - Arrow"
+    IDP_MOUSEPOINTERCROSS   "%i - Cross"
+    IDP_MOUSEPOINTERIBEAM   "%i - I-Cursor"
+    IDP_MOUSEPOINTERICON    "%i - Symbol"
+    IDP_MOUSEPOINTERSIZE    "%i - Size"
+    IDP_MOUSEPOINTERSIZENESW "%i - Size NE SW"
+    IDP_MOUSEPOINTERSIZENS  "%i - Size N S"
+    IDP_MOUSEPOINTERSIZENWSE "%i - Size NW SE"
+    IDP_MOUSEPOINTERSIZEEW  "%i - Size E W"
+    IDP_MOUSEPOINTERUPARROW "%i - Up-Arrow"
+    IDP_MOUSEPOINTERHOURGLASS "%i - Hourglass"
+    IDP_MOUSEPOINTERNODROP  "%i - Can't Drop"
+    IDP_MOUSEPOINTERARROWHOURGLASS "%i - Arrow + Hourglass"
+    IDP_MOUSEPOINTERARROWQUESTION "%i - Arrow + Questionmark"
+END
+
+STRINGTABLE 
+BEGIN
+    IDP_MOUSEPOINTERSIZEALL "%i - Size All"
+    IDP_MOUSEPOINTERHAND    "%i - Hand"
+    IDP_MOUSEPOINTERINSERTMEDIA "%i - Insert Media"
+    IDP_MOUSEPOINTERSCROLLALL "%i - Scroll All"
+    IDP_MOUSEPOINTERSCROLLN "%i - Scroll N"
+    IDP_MOUSEPOINTERSCROLLNE "%i - Scroll NE"
+    IDP_MOUSEPOINTERSCROLLE "%i - Scroll E"
+    IDP_MOUSEPOINTERSCROLLSE "%i - Scroll SE"
+    IDP_MOUSEPOINTERSCROLLS "%i - Scroll S"
+    IDP_MOUSEPOINTERSCROLLSW "%i - Scroll SW"
+    IDP_MOUSEPOINTERSCROLLW "%i - Scroll W"
+    IDP_MOUSEPOINTERSCROLLNW "%i - Scroll NW"
+    IDP_MOUSEPOINTERSCROLLNS "%i - Scroll N S"
+    IDP_MOUSEPOINTERSCROLLEW "%i - Scroll E W"
+    IDP_MOUSEPOINTERCUSTOM  "%i - Custom"
+    IDP_NORMALDROPDOWNBUTTONSTYLESPLITBUTTON "%i - Split Button"
+    IDP_NORMALDROPDOWNBUTTONSTYLEWITHOUTARROW "%i - Without Arrow"
+    IDP_OLEDRAGIMAGESTYLECLASSIC "%i - Classic (Always)"
+    IDP_OLEDRAGIMAGESTYLEAERO "%i - Aero (If Available)"
+    IDP_ORIENTATIONHORIZONTAL "%i - Horizontal"
+    IDP_ORIENTATIONVERTICAL "%i - Vertical"
+    IDP_REGISTERFOROLEDRAGDROPNONE "%i - No Drag'n'Drop"
+    IDP_REGISTERFOROLEDRAGDROPNATIVE "%i - Native Drag'n'Drop"
+    IDP_REGISTERFOROLEDRAGDROPADVANCED "%i - Advanced Drag'n'Drop"
+    IDP_REPLACEMDIFRAMEMENUDONTREPLACE "%i - Don't Replace"
+    IDP_REPLACEMDIFRAMEMENUJUSTREMOVE "%i - Just Remove"
+    IDP_REPLACEMDIFRAMEMENUFULLREPLACE "%i - Full Replace"
+    IDP_RIGHTTOLEFTNONE     "%i - None"
+    IDP_RIGHTTOLEFTTEXT     "%i - Text"
+    IDP_RIGHTTOLEFTLAYOUT   "%i - Layout"
+    IDP_RIGHTTOLEFTTEXTLAYOUT "%i - Text + Layout"
+    IDP_VERTICALTEXTALIGNMENTTOP       "%i - Top"
+    IDP_VERTICALTEXTALIGNMENTCENTER    "%i - Center"
+    IDP_VERTICALTEXTALIGNMENTBOTTOM    "%i - Bottom"
+END
+
+STRINGTABLE 
+BEGIN
+    IDES_FORMATMISMATCH     "Specified format doesn't match format of data"
+    IDES_INVALIDOBJUSE      "Invalid object use"
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+#ifdef _UNICODE
+  1 TYPELIB "TBarCtlsU.tlb"
+#else
+  1 TYPELIB "TBarCtlsA.tlb"
+#endif
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
