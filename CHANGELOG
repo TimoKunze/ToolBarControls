@@ -1,0 +1,109 @@
+Version 1.3.3 - DD/MM/YYYY
+
+- Project published on GitHub.
+
+
+
+Version 1.3.2 - 31/07/2016
+
+- Fixed some memory leaks that occurred when firing certain events.
+
+
+
+Version 1.3.1 - 26/01/2016
+
+- FIX: The controls could crash during OLE drag'n'drop.
+- FIX: The controls could crash the other process during OLE drag'n'drop, especially when IOLEDataObject::SetDropDescription() had been called.
+
+
+
+Version 1.3.0 - 24/01/2016
+
+- Added the FinishOLEDragDrop method to each control. It should not be used if not really needed. It can be used to hide the drag image if execution of the OLEDragDrop event takes a long time or if a message is displayed from within this event.
+- Initial support for Windows 10.
+
+
+
+Version 1.2.4 - 24/06/2015
+
+- Fixed a problem with the CustomDraw event that could crash the control.
+- Fixed a problem with the Align property that occurred if the control's x or y coordinate has been 0.
+
+
+
+Version 1.2.3 - 02/11/2014
+
+- Fixed the controls' Alignment property. Now it behaves like the Alignment property of VB's intrinsic controls.
+
+
+
+Version 1.2.2 - 18/10/2014
+
+- Fixed a crash that could occur in VB6 IDE when changing the ReBar control's Appearance property.
+- Added a new sample "PNG Icons" which demonstrates how to load tool bar icons from a PNG file using GDI+.
+
+
+
+Version 1.2.1 - 10/08/2014
+
+- FIX: The tool bar control's *Click events have not been raised for the chevron popup window.
+- FIX: The IToolBar::MousePointer property did not work properly for the chevron popup window.
+
+
+
+Version 1.2.0 - 21/07/2014
+
+- Added the XClick, and XDblClick events for support of the extended mouse buttons.
+- Extended the Mouse* events to support the extended mouse buttons.
+- FIX: The Font and MouseIcon properties could leak GDI resources.
+- Initial support for Windows 8.1.
+
+
+
+Version 1.1.2 - 09/05/2013
+
+- Fixed compatibility of the ToolBar control with pager controls.
+- FIX: IToolBar::BackStyle = bksTransparent did work only partially.
+
+
+
+Version 1.1.1 - 13/01/2013
+
+- FIX: The last character of the band or button text could not be used as accelerator key.
+- FIX: The ResizedControlWindow event was not fired when it should have been fired.
+
+
+
+Version 1.1.0 - 26/08/2012
+
+- Fixed IControlHostWindow::CalculateWindowSize() and IControlHostWindow::Move(). Both methods did not handle default values correctly.
+- Initial support for Windows 8.
+
+
+
+Version 1.0.3 - 25/03/2012
+
+- FIX: The background of transparent stand-alone tool bars that used the classic theme, wasn't drawn correctly. This wasn't really a bug because everything was working as designed. However, in most cases this wasn't the expected result. I "fixed" this problem by detecting the situation, forcing the RaiseCustomDrawEventOnEraseBackground property to True and drawing the background after the CustomDraw event (for drawStage = cdsPreErase) if the return value doesn't include the cdrvSkipDefault flag.
+- Added a new sample "Breadcrumb Bar" which demonstrates how to use the both controls together with ComboListBoxControls and the ProgressBar control to build a neat breadcrumb bar like that of Windows Explorer.
+- Reimplemented the subclassing code of the VB6 samples to make it more robust.
+
+
+
+Version 1.0.2 - 08/01/2012
+
+- FIX: On systems older than Windows 7, the tool bar chevron popup window could be displayed off-screen.
+- FIX: The GetAvailableButton event had problems with the button texts. This issue could not be fixed entirely, but now a simple workaround exists. See the help topic about this event for details.
+- FIX: The IToolBar::LoadToolBarStateFromRegistry method did not work properly.
+- Fixed a memory leak that occurred during drag'n'drop if Aero drag-images have been used.
+
+
+
+Version 1.0.1 - 28/11/2011
+
+- FIX: The chevron popup tool bar didn't always get the same window theme as the tool bar that it has been displayed for.
+
+
+
+Version 1.0.0 - 21/11/2011
+
+- First public release.
