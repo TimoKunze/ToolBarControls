@@ -413,7 +413,7 @@ STDMETHODIMP ToolBarButtonContainer::CreateDragImage(OLE_XPOS_PIXELS* pXUpperLef
 				CAtlArray<RECT> buttonBoundingRects;
 			#endif
 			POINT upperLeftPoint = {0};
-			WTL::CRect boundingRect;
+			CRect boundingRect;
 			#ifdef USE_STL
 				for(std::vector<LONG>::iterator iter = properties.buttons.begin(); iter != properties.buttons.end(); ++iter) {
 					int buttonIndex = properties.pOwnerTBar->IDToButtonIndex(*iter);
@@ -449,7 +449,7 @@ STDMETHODIMP ToolBarButtonContainer::CreateDragImage(OLE_XPOS_PIXELS* pXUpperLef
 					#endif
 				}
 			}
-			WTL::CRect dragImageRect(0, 0, boundingRect.Width(), boundingRect.Height());
+			CRect dragImageRect(0, 0, boundingRect.Width(), boundingRect.Height());
 
 			// setup the DCs we'll draw into
 			HDC hCompatibleDC = GetDC(HWND_DESKTOP);

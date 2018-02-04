@@ -1136,7 +1136,7 @@ STDMETHODIMP ToolBarButton::get_ShouldBeDisplayedInChevronPopup(VARIANT_BOOL* pV
 
 	RECT availableRectangle = {0};
 	GetClientRect(hWndTBar, &availableRectangle);
-	WTL::CRect buttonRectangle;
+	CRect buttonRectangle;
 	if(SendMessage(hWndTBar, TB_GETITEMRECT, properties.buttonIndex, reinterpret_cast<LPARAM>(&buttonRectangle))) {
 		if(isVertical) {
 			*pValue = BOOL2VARIANTBOOL(buttonRectangle.bottom > availableRectangle.bottom);

@@ -32,7 +32,7 @@ STDMETHODIMP CommonProperties::Activate(HWND hWndParent, LPCRECT pRect, BOOL mod
 	controls.disabledEventsList.GetToolTips().SetTitle(TTI_INFO, TEXT("Affected events"));
 
 	// setup the toolbar
-	WTL::CRect toolbarRect;
+	CRect toolbarRect;
 	GetClientRect(&toolbarRect);
 	toolbarRect.OffsetRect(0, 2);
 	toolbarRect.left += toolbarRect.right - 46;

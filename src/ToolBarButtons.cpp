@@ -794,7 +794,7 @@ void ToolBarButtons::OptimizeFilter(FilteredPropertyConstants filteredProperty)
 {
 	ATLASSERT(IsWindow(hWndTBar));
 
-	CWindowEx(hWndTBar).InternalSetRedraw(FALSE);
+	CWindowEx2(hWndTBar).InternalSetRedraw(FALSE);
 	// sort in reverse order
 	#ifdef USE_STL
 		buttonsToRemove.sort(std::greater<int>());
@@ -815,7 +815,7 @@ void ToolBarButtons::OptimizeFilter(FilteredPropertyConstants filteredProperty)
 			SendMessage(hWndTBar, TB_DELETEBUTTON, buttonsToRemove.GetAt(buttonsToRemove.FindIndex(i)), 0);
 		}
 	#endif
-	CWindowEx(hWndTBar).InternalSetRedraw(TRUE);
+	CWindowEx2(hWndTBar).InternalSetRedraw(TRUE);
 
 	return S_OK;
 }

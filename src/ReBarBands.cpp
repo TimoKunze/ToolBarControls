@@ -873,7 +873,7 @@ void ReBarBands::OptimizeFilter(FilteredPropertyConstants filteredProperty)
 {
 	ATLASSERT(IsWindow(hWndRBar));
 
-	CWindowEx(hWndRBar).InternalSetRedraw(FALSE);
+	CWindowEx2(hWndRBar).InternalSetRedraw(FALSE);
 	// sort in reverse order
 	#ifdef USE_STL
 		bandsToRemove.sort(std::greater<int>());
@@ -894,7 +894,7 @@ void ReBarBands::OptimizeFilter(FilteredPropertyConstants filteredProperty)
 			SendMessage(hWndRBar, RB_DELETEBAND, bandsToRemove.GetAt(bandsToRemove.FindIndex(i)), 0);
 		}
 	#endif
-	CWindowEx(hWndRBar).InternalSetRedraw(TRUE);
+	CWindowEx2(hWndRBar).InternalSetRedraw(TRUE);
 
 	return S_OK;
 }

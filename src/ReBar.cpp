@@ -2220,8 +2220,8 @@ STDMETHODIMP ReBar::putref_MDIFrameMenuBand(IReBarBand* pNewMenuBand)
 
 	if(flags.customizerOfMdiMessageHook) {
 		// force size changes for the old and new child window and redraw everything
-		CWindowEx oldMenuBandChildWindow;
-		CWindowEx newMenuBandChildWindow;
+		CWindowEx2 oldMenuBandChildWindow;
+		CWindowEx2 newMenuBandChildWindow;
 		if(menuBandWindow.IsWindow()) {
 			oldMenuBandChildWindow.Attach(menuBandWindow);
 			ATLVERIFY(RemoveWindowSubclass(menuBandWindow, ReBar::MenuBandWindowSubclass, reinterpret_cast<UINT_PTR>(this)));
@@ -3232,7 +3232,7 @@ LRESULT ReBar::OnSetCursor(UINT /*message*/, WPARAM /*wParam*/, LPARAM /*lParam*
 	BOOL setCursor = FALSE;
 
 	// Are we really over the control?
-	WTL::CRect clientArea;
+	CRect clientArea;
 	GetClientRect(&clientArea);
 	ClientToScreen(&clientArea);
 	DWORD position = GetMessagePos();
@@ -3423,7 +3423,7 @@ LRESULT ReBar::OnWindowPosChanged(UINT /*message*/, WPARAM /*wParam*/, LPARAM lP
 {
 	LPWINDOWPOS pDetails = reinterpret_cast<LPWINDOWPOS>(lParam);
 
-	WTL::CRect windowRectangle = m_rcPos;
+	CRect windowRectangle = m_rcPos;
 
 	/* Ugly hack: We depend on this message being sent without SWP_NOMOVE at least once, but this requirement
 	              not always will be fulfilled. Fortunately pDetails seems to contain correct x and y values
@@ -4466,7 +4466,7 @@ LRESULT ReBar::OnAllHookMessages(UINT message, WPARAM /*wParam*/, LPARAM /*lPara
 		if(wasMaximized == !mdiStatus.activeMDIChildMaximized || hIconOld != mdiStatus.hIconChildMaximized) {
 			// force size change and redraw everything
 			if(menuBandWindow.IsWindow()) {
-				CWindowEx childWindow(menuBandWindow);
+				CWindowEx2 childWindow(menuBandWindow);
 				RECT windowRectangle = {0};
 				childWindow.GetWindowRect(&windowRectangle);
 				::MapWindowPoints(HWND_DESKTOP, *this, reinterpret_cast<LPPOINT>(&windowRectangle), 2);
@@ -6018,7 +6018,7 @@ int ReBar::HitTest(LONG x, LONG y, UINT* pFlags/*, BOOL ignoreBoundingBoxDefinit
 
 	POINT pt = {x, y};
 	ClientToScreen(&pt);
-	WTL::CRect rc;
+	CRect rc;
 	GetWindowRect(&rc);
 	if(rc.PtInRect(pt)) {
 		bandIndex = static_cast<int>(SendMessage(RB_HITTEST, 0, reinterpret_cast<LPARAM>(&hitTestInfo)));

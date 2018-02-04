@@ -1147,9 +1147,9 @@ HIMAGELIST ToolBar::CreateLegacyDragImage(int buttonIndex, LPPOINT pUpperLeftPoi
 	maskMemoryDC.CreateCompatibleDC(hCompatibleDC);
 
 	// calculate the bounding rectangle
-	WTL::CRect buttonBoundingRect;
-	WTL::CRect labelBoundingRect;
-	WTL::CRect iconBoundingRect;
+	CRect buttonBoundingRect;
+	CRect labelBoundingRect;
+	CRect iconBoundingRect;
 
 	SendMessage(TB_GETITEMRECT, buttonIndex, reinterpret_cast<LPARAM>(&buttonBoundingRect));
 	if(pBoundingRectangle) {
@@ -1414,7 +1414,7 @@ BOOL ToolBar::CreateLegacyOLEDragImage(IToolBarButtonContainer* pButtons, LPSHDR
 			pDragImage->crColorKey = RGB(0xF4, 0x00, 0x00);
 			CBrush backroundBrush;
 			backroundBrush.CreateSolidBrush(pDragImage->crColorKey);
-			memoryDC.FillRect(WTL::CRect(0, 0, bitmapWidth, bitmapHeight), backroundBrush);
+			memoryDC.FillRect(CRect(0, 0, bitmapWidth, bitmapHeight), backroundBrush);
 			ImageList_Draw(hImageList, 0, memoryDC, 0, 0, ILD_NORMAL);
 
 			// clean up
@@ -5458,7 +5458,7 @@ STDMETHODIMP ToolBar::DisplayChevronPopupWindow(OLE_XPOS_PIXELS x, OLE_YPOS_PIXE
 	GetClientRect(&availableRectangle);
 	int buttonIndex = 0;
 	int buttonCount = SendMessage(TB_BUTTONCOUNT, 0, 0);
-	WTL::CRect buttonRectangle;
+	CRect buttonRectangle;
 	for(; buttonIndex < buttonCount; buttonIndex++) {
 		if(SendMessage(TB_GETITEMRECT, buttonIndex, reinterpret_cast<LPARAM>(&buttonRectangle))) {
 			if(isVertical) {
@@ -5684,9 +5684,9 @@ STDMETHODIMP ToolBar::DisplayChevronPopupWindow(OLE_XPOS_PIXELS x, OLE_YPOS_PIXE
 									/*} else if(hContainedWindow) {
 										::SetParent(hContainedWindow, chevronPopupToolbar);
 
-										WTL::CRect windowRectangle;
+										CRect windowRectangle;
 										::GetWindowRect(hContainedWindow, &windowRectangle);
-										WTL::CRect targetRectangle;
+										CRect targetRectangle;
 										switch(horizontalAlignment) {
 											case halLeft:
 												targetRectangle.left = buttonRectangle.left;
@@ -5815,7 +5815,7 @@ STDMETHODIMP ToolBar::DisplayChevronPopupWindow(OLE_XPOS_PIXELS x, OLE_YPOS_PIXE
 							parentWindowChevronPopupMenu.SendMessage(WM_ENTERMENULOOP, TRUE, 0);
 							chevronPopupMenuWindow.SetWindowPos(NULL, &popupWindowRectangle, SWP_SHOWWINDOW | SWP_FRAMECHANGED | SWP_NOOWNERZORDER | SWP_NOZORDER | SWP_NOACTIVATE);
 							// align the tool bar
-							WTL::CRect clientRectangle;
+							CRect clientRectangle;
 							chevronPopupMenuWindow.GetClientRect(&clientRectangle);
 							clientRectangle.DeflateRect(2, 2);
 							chevronPopupToolbar.MoveWindow(&clientRectangle);
@@ -7188,7 +7188,7 @@ LRESULT ToolBar::OnSetCursor(LONG index, UINT /*message*/, WPARAM /*wParam*/, LP
 	BOOL setCursor = FALSE;
 
 	// Are we really over the control?
-	WTL::CRect clientArea;
+	CRect clientArea;
 	if(index == 6) {
 		chevronPopupToolbar.GetClientRect(&clientArea);
 		chevronPopupToolbar.ClientToScreen(&clientArea);
@@ -7447,7 +7447,7 @@ LRESULT ToolBar::OnWindowPosChanged(UINT /*message*/, WPARAM /*wParam*/, LPARAM 
 {
 	LPWINDOWPOS pDetails = reinterpret_cast<LPWINDOWPOS>(lParam);
 
-	WTL::CRect windowRectangle = m_rcPos;
+	CRect windowRectangle = m_rcPos;
 	/* Ugly hack: We depend on this message being sent without SWP_NOMOVE at least once, but this requirement
 	              not always will be fulfilled. Fortunately pDetails seems to contain correct x and y values
 	              even if SWP_NOMOVE is set.
@@ -7471,7 +7471,7 @@ LRESULT ToolBar::OnWindowPosChanged(UINT /*message*/, WPARAM /*wParam*/, LPARAM 
 				* scroll buttons will stop working if they're entered from the wrong side.
 				* Therefore we have to setup some clipping.
 				*/
-			WTL::CRect pagerClientRectangle;
+			CRect pagerClientRectangle;
 			::GetWindowRect(hWndParent, &pagerClientRectangle);
 			::MapWindowPoints(HWND_DESKTOP, hWndParent, reinterpret_cast<LPPOINT>(&pagerClientRectangle), 2);
 			SetObjectRects(&windowRectangle, &pagerClientRectangle);
@@ -8287,7 +8287,7 @@ LRESULT ToolBar::OnHookMouseMove(UINT /*message*/, WPARAM /*wParam*/, LPARAM /*l
 				BOOL shouldBeDisplayedInChevron = FALSE;
 				RECT availableRectangle = {0};
 				GetClientRect(&availableRectangle);
-				WTL::CRect buttonRectangle;
+				CRect buttonRectangle;
 				if(SendMessage(TB_GETITEMRECT, hitButton, reinterpret_cast<LPARAM>(&buttonRectangle))) {
 					if(GetStyle() & CCS_VERT) {
 						shouldBeDisplayedInChevron = (buttonRectangle.bottom > availableRectangle.bottom);
@@ -9551,9 +9551,9 @@ inline HRESULT ToolBar::Raise_ContextMenu(LONG messageMapIndex, SHORT button, SH
 			if(properties.processContextMenuKeys) {
 				HWND hWndToUse = (messageMapIndex == 6 ? chevronPopupToolbar : static_cast<HWND>(*this));
 				int hotButton = static_cast<int>(::SendMessage(hWndToUse, TB_GETHOTITEM, 0, 0));
-				WTL::CRect buttonRectangle;
+				CRect buttonRectangle;
 				if(::SendMessage(hWndToUse, TB_GETITEMRECT, hotButton, reinterpret_cast<LPARAM>(&buttonRectangle))) {
-					WTL::CPoint centerPoint = buttonRectangle.CenterPoint();
+					CPoint centerPoint = buttonRectangle.CenterPoint();
 					x = centerPoint.x;
 					y = centerPoint.y;
 				}
@@ -11197,7 +11197,7 @@ int ToolBar::HitTest(LONG x, LONG y, UINT* pFlags, HWND hWndToUse/* = NULL*//*, 
 
 	POINT pt = {x, y};
 	::ClientToScreen(hWndToUse, &pt);
-	WTL::CRect rc;
+	CRect rc;
 	::GetWindowRect(hWndToUse, &rc);
 	if(!rc.PtInRect(pt)) {
 		if(pt.x < rc.left) {
@@ -11389,11 +11389,11 @@ void ToolBar::RegisterPlaceholderButton(LONG buttonID, HWND hWnd/* = NULL*/)
 		::SetParent(hWnd, *this);
 		int buttonIndex = IDToButtonIndex(buttonID);
 		if(buttonIndex != -1) {
-			WTL::CRect buttonRectangle;
+			CRect buttonRectangle;
 			if(SendMessage(TB_GETITEMRECT, buttonIndex, reinterpret_cast<LPARAM>(&buttonRectangle))) {
-				WTL::CRect windowRectangle;
+				CRect windowRectangle;
 				::GetWindowRect(hWnd, &windowRectangle);
-				WTL::CRect targetRectangle;
+				CRect targetRectangle;
 				switch(pDetails->horizontalChildWindowAlignment) {
 					case halLeft:
 						targetRectangle.left = buttonRectangle.left;
@@ -11552,11 +11552,11 @@ BOOL ToolBar::SetPlaceholderButtonChildWindow(LONG buttonID, HWND hWnd, HAlignme
 			::SetParent(hWnd, *this);
 			int buttonIndex = IDToButtonIndex(buttonID);
 			if(buttonIndex != -1) {
-				WTL::CRect buttonRectangle;
+				CRect buttonRectangle;
 				if(SendMessage(TB_GETITEMRECT, buttonIndex, reinterpret_cast<LPARAM>(&buttonRectangle))) {
-					WTL::CRect windowRectangle;
+					CRect windowRectangle;
 					::GetWindowRect(hWnd, &windowRectangle);
-					WTL::CRect targetRectangle;
+					CRect targetRectangle;
 					switch(pNewDetails->horizontalChildWindowAlignment) {
 						case halLeft:
 							targetRectangle.left = buttonRectangle.left;

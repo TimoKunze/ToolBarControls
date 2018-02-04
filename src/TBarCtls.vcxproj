@@ -514,7 +514,7 @@
     <ClCompile Include="CommonProperties.cpp" />
     <ClCompile Include="ControlHostDialog.cpp" />
     <ClCompile Include="ControlHostWindow.cpp" />
-    <ClCompile Include="CWindowEx.cpp" />
+    <ClCompile Include="CWindowEx2.cpp" />
     <ClCompile Include="EnumOLEVERB.cpp" />
     <ClCompile Include="helpers.cpp" />
     <ClCompile Include="KeyboardHookProvider.cpp" />
@@ -633,7 +633,7 @@
     <ClInclude Include="APIWrapper.h" />
     <ClInclude Include="ClassFactory.h" />
     <ClInclude Include="CompilerFlags.h" />
-    <ClInclude Include="CWindowEx.h" />
+    <ClInclude Include="CWindowEx2.h" />
     <ClInclude Include="DispIDs.h" />
     <ClInclude Include="EnumOLEVERB.h" />
     <ClInclude Include="helpers.h" />

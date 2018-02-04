@@ -25,7 +25,7 @@
 	#include "TBarCtlsA.h"
 #endif
 #include "UndocComctl32.h"
-#include "CWindowEx.h"
+#include "CWindowEx2.h"
 #include "_IReBarEvents_CP.h"
 #include "ICategorizeProperties.h"
 #include "ICreditsProvider.h"
