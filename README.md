@@ -1,6 +1,6 @@
 <p align=center>
-  <a href="https://github.com/TimoKunze/ToolBarControls/releases/tag/1.3.3">
-    <img alt="Release 1.3.3 Release" src="https://img.shields.io/badge/release-1.3.3-0688CB.svg">
+  <a href="https://github.com/TimoKunze/ToolBarControls/releases/tag/1.3.4">
+    <img alt="Release 1.3.4 Release" src="https://img.shields.io/badge/release-1.3.4-0688CB.svg">
   </a>
   <a href="https://github.com/TimoKunze/ToolBarControls/releases">
     <img alt="Download ToolBarControls" src="https://img.shields.io/badge/download-latest-0688CB.svg">
