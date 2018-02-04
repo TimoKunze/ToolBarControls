@@ -187,13 +187,13 @@ public:
 
 	/// \brief <em>Adds the specified button(s) to the collection</em>
 	///
-	/// \param[in] buttons The button(s) to add. May be either a button ID, a \c ToolBarButton object or a
-	///            \c ToolBarButtons collection.
+	/// \param[in] buttonsToAdd The button(s) to add. May be either a button ID, a \c ToolBarButton object or
+	///            a \c ToolBarButtons collection.
 	///
 	/// \return An \c HRESULT error code.
 	///
 	/// \sa ToolBarButton::get_ID, Count, Remove, RemoveAll
-	virtual HRESULT STDMETHODCALLTYPE Add(VARIANT buttons);
+	virtual HRESULT STDMETHODCALLTYPE Add(VARIANT buttonsToAdd);
 	/// \brief <em>Clones the collection object</em>
 	///
 	/// Retrieves an exact copy of the collection.

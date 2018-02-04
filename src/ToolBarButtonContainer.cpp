@@ -216,19 +216,19 @@ STDMETHODIMP ToolBarButtonContainer::get__NewEnum(IUnknown** ppEnumerator)
 }
 
 
-STDMETHODIMP ToolBarButtonContainer::Add(VARIANT buttons)
+STDMETHODIMP ToolBarButtonContainer::Add(VARIANT buttonsToAdd)
 {
 	HRESULT hr = E_FAIL;
 	LONG id = 0;
-	switch(buttons.vt) {
+	switch(buttonsToAdd.vt) {
 		case VT_DISPATCH:
-			if(buttons.pdispVal) {
-				CComQIPtr<IToolBarButton, &IID_IToolBarButton> pTBButton(buttons.pdispVal);
+			if(buttonsToAdd.pdispVal) {
+				CComQIPtr<IToolBarButton, &IID_IToolBarButton> pTBButton(buttonsToAdd.pdispVal);
 				if(pTBButton) {
 					// add a single ToolBarButton object
 					hr = pTBButton->get_ID(&id);
 				} else {
-					CComQIPtr<IToolBarButtons, &IID_IToolBarButtons> pTBButtons(buttons.pdispVal);
+					CComQIPtr<IToolBarButtons, &IID_IToolBarButtons> pTBButtons(buttonsToAdd.pdispVal);
 					if(pTBButtons) {
 						// add a ToolBarButtons collection
 						CComQIPtr<IEnumVARIANT, &IID_IEnumVARIANT> pEnumerator(pTBButtons);
@@ -276,7 +276,7 @@ STDMETHODIMP ToolBarButtonContainer::Add(VARIANT buttons)
 		default:
 			VARIANT v;
 			VariantInit(&v);
-			hr = VariantChangeType(&v, &buttons, 0, VT_UI4);
+			hr = VariantChangeType(&v, &buttonsToAdd, 0, VT_UI4);
 			id = v.ulVal;
 			break;
 	}

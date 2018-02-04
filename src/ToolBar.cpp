@@ -1364,9 +1364,9 @@ BOOL ToolBar::CreateLegacyOLEDragImage(IToolBarButtonContainer* pButtons, LPSHDR
 			}
 			ATLASSUME(pImgLst);
 
-			DWORD flags = 0;
-			pImgLst->GetItemFlags(0, &flags);
-			if(flags & ILIF_ALPHA) {
+			DWORD imageFlags = 0;
+			pImgLst->GetItemFlags(0, &imageFlags);
+			if(imageFlags & ILIF_ALPHA) {
 				// the drag image makes use of the alpha channel
 				IMAGEINFO imageInfo = {0};
 				ImageList_GetImageInfo(hImageList, 0, &imageInfo);
@@ -5095,8 +5095,8 @@ STDMETHODIMP ToolBar::get_SuggestedIconSize(SuggestedIconSizeConstants* pValue)
 	}
 
 	if(IsWindow()) {
-		DWORD flags = SendMessage(TB_GETBITMAPFLAGS, 0, 0);
-		if(flags & TBBF_LARGE) {
+		DWORD bitmapFlags = SendMessage(TB_GETBITMAPFLAGS, 0, 0);
+		if(bitmapFlags & TBBF_LARGE) {
 			*pValue = sisLarge;
 		} else {
 			*pValue = sisSmall;
@@ -5590,7 +5590,7 @@ STDMETHODIMP ToolBar::DisplayChevronPopupWindow(OLE_XPOS_PIXELS x, OLE_YPOS_PIXE
 					LPWSTR pSubAppName = pSubAppNameBuffer;
 					WCHAR pSubIDListBuffer[300] = {0};
 					LPWSTR pSubIDList = pSubIDListBuffer;
-					ATOM valueSubAppName = reinterpret_cast<ATOM>(GetPropW(*this, L"#43281"));
+					ATOM valueSubAppName = static_cast<ATOM>(LOWORD(GetPropW(*this, L"#43281")));
 					if(valueSubAppName) {
 						GetAtomNameW(valueSubAppName, pSubAppNameBuffer, 300);
 						if(lstrlenW(pSubAppNameBuffer) == 1 && pSubAppNameBuffer[0] == L'$') {
@@ -5599,7 +5599,7 @@ STDMETHODIMP ToolBar::DisplayChevronPopupWindow(OLE_XPOS_PIXELS x, OLE_YPOS_PIXE
 					} else {
 						pSubAppName = NULL;
 					}
-					ATOM valueSubIDList = reinterpret_cast<ATOM>(GetPropW(*this, L"#43280"));
+					ATOM valueSubIDList = static_cast<ATOM>(LOWORD(GetPropW(*this, L"#43280")));
 					if(valueSubIDList) {
 						GetAtomNameW(valueSubIDList, pSubIDListBuffer, 300);
 						if(lstrlenW(pSubIDListBuffer) == 1 && pSubIDListBuffer[0] == L'$') {
@@ -6035,11 +6035,11 @@ STDMETHODIMP ToolBar::HitTest(OLE_XPOS_PIXELS x, OLE_YPOS_PIXELS y, HitTestConst
 	}
 
 	if(IsWindow()) {
-		UINT flags = static_cast<UINT>(*pHitTestDetails);
-		int buttonIndex = HitTest(x, y, &flags, *this/*, TRUE*/);
+		UINT hitTestFlags = static_cast<UINT>(*pHitTestDetails);
+		int buttonIndex = HitTest(x, y, &hitTestFlags, *this/*, TRUE*/);
 
 		if(pHitTestDetails) {
-			*pHitTestDetails = static_cast<HitTestConstants>(flags);
+			*pHitTestDetails = static_cast<HitTestConstants>(hitTestFlags);
 		}
 		ClassFactory::InitToolBarButton(buttonIndex, FALSE, this, IID_IToolBarButton, reinterpret_cast<LPUNKNOWN*>(ppHitButton));
 		return S_OK;
@@ -6055,11 +6055,11 @@ STDMETHODIMP ToolBar::HitTestChevronToolBar(OLE_XPOS_PIXELS x, OLE_YPOS_PIXELS y
 	}
 
 	if(chevronPopupToolbar.IsWindow()) {
-		UINT flags = static_cast<UINT>(*pHitTestDetails);
-		int buttonIndex = HitTest(x, y, &flags, chevronPopupToolbar/*, TRUE*/);
+		UINT hitTestFlags = static_cast<UINT>(*pHitTestDetails);
+		int buttonIndex = HitTest(x, y, &hitTestFlags, chevronPopupToolbar/*, TRUE*/);
 
 		if(pHitTestDetails) {
-			*pHitTestDetails = static_cast<HitTestConstants>(flags);
+			*pHitTestDetails = static_cast<HitTestConstants>(hitTestFlags);
 		}
 		ClassFactory::InitToolBarButton(buttonIndex, TRUE, this, IID_IToolBarButton, reinterpret_cast<LPUNKNOWN*>(ppHitButton));
 		return S_OK;
@@ -6440,9 +6440,9 @@ STDMETHODIMP ToolBar::SetHotButton(IToolBarButton* pNewHotButton, HotButtonChang
 			buttonIndex = l;
 		}
 
-		LPARAM flags = (hotButtonChangeReason & (HICF_OTHER | HICF_MOUSE | HICF_ARROWKEYS | HICF_ACCELERATOR));
-		flags |= (additionalInfo & (HICF_DUPACCEL | HICF_ENTERING | HICF_LEAVING | HICF_RESELECT | HICF_LMOUSE | HICF_TOGGLEDROPDOWN));
-		buttonIndex = SendMessage(TB_SETHOTITEM2, buttonIndex, flags);
+		LPARAM hotItemFlags = (hotButtonChangeReason & (HICF_OTHER | HICF_MOUSE | HICF_ARROWKEYS | HICF_ACCELERATOR));
+		hotItemFlags |= (additionalInfo & (HICF_DUPACCEL | HICF_ENTERING | HICF_LEAVING | HICF_RESELECT | HICF_LMOUSE | HICF_TOGGLEDROPDOWN));
+		buttonIndex = SendMessage(TB_SETHOTITEM2, buttonIndex, hotItemFlags);
 		ClassFactory::InitToolBarButton(buttonIndex, FALSE, this, IID_IToolBarButton, reinterpret_cast<LPUNKNOWN*>(ppPreviousHotButton));
 		hr = S_OK;
 	}
@@ -9400,52 +9400,52 @@ void ToolBar::ApplyFont(void)
 
 void ToolBar::SetDrawTextFlags(void)
 {
-	UINT flags = properties.drawTextFlags;
+	UINT drawTextFlags = properties.drawTextFlags;
 	switch(properties.horizontalTextAlignment) {
 		case halLeft:
-			flags &= ~(DT_CENTER | DT_RIGHT);
-			flags |= DT_LEFT;
+			drawTextFlags &= ~(DT_CENTER | DT_RIGHT);
+			drawTextFlags |= DT_LEFT;
 			break;
 		case halCenter:
-			flags &= ~(DT_LEFT | DT_RIGHT);
-			flags |= DT_CENTER;
+			drawTextFlags &= ~(DT_LEFT | DT_RIGHT);
+			drawTextFlags |= DT_CENTER;
 			break;
 		case halRight:
-			flags &= ~(DT_LEFT | DT_CENTER);
-			flags |= DT_RIGHT;
+			drawTextFlags &= ~(DT_LEFT | DT_CENTER);
+			drawTextFlags |= DT_RIGHT;
 			break;
 	}
 	if(properties.useMnemonics) {
-		flags &= ~DT_NOPREFIX;
+		drawTextFlags &= ~DT_NOPREFIX;
 	} else {
-		flags |= DT_NOPREFIX;
+		drawTextFlags |= DT_NOPREFIX;
 	}
 	if(properties.menuMode) {
 		if(menuModeState.displayKeyboardCues) {
-			flags &= ~DT_HIDEPREFIX;
+			drawTextFlags &= ~DT_HIDEPREFIX;
 		} else {
-			flags |= DT_HIDEPREFIX;
+			drawTextFlags |= DT_HIDEPREFIX;
 		}
 	}
 	switch(properties.verticalTextAlignment) {
 		case valTop:
-			flags &= ~(DT_VCENTER | DT_BOTTOM);
-			flags |= DT_TOP;
+			drawTextFlags &= ~(DT_VCENTER | DT_BOTTOM);
+			drawTextFlags |= DT_TOP;
 			break;
 		case valCenter:
-			flags &= ~(DT_TOP | DT_BOTTOM);
-			flags |= DT_VCENTER;
+			drawTextFlags &= ~(DT_TOP | DT_BOTTOM);
+			drawTextFlags |= DT_VCENTER;
 			break;
 		case valBottom:
-			flags &= ~(DT_TOP | DT_VCENTER);
-			flags |= DT_BOTTOM;
+			drawTextFlags &= ~(DT_TOP | DT_VCENTER);
+			drawTextFlags |= DT_BOTTOM;
 			break;
 	}
 	UINT mask = DT_LEFT | DT_CENTER | DT_RIGHT | DT_NOPREFIX | DT_TOP | DT_VCENTER | DT_BOTTOM;
 	if(properties.menuMode) {
 		mask |= DT_HIDEPREFIX;
 	}
-	SendMessage(TB_SETDRAWTEXTFLAGS, mask, flags);
+	SendMessage(TB_SETDRAWTEXTFLAGS, mask, drawTextFlags);
 }
 
 
@@ -11130,7 +11130,7 @@ void ToolBar::DoPopupMenu(int buttonIndex, HMENU hPopupMenu, BOOL animate)
 	}
 }
 
-BOOL ToolBar::DoTrackPopupMenu(HMENU hPopupMenu, UINT flags, int x, int y, LPTPMPARAMS pParams/* = NULL*/)
+BOOL ToolBar::DoTrackPopupMenu(HMENU hPopupMenu, UINT trackPopupMenuFlags, int x, int y, LPTPMPARAMS pParams/* = NULL*/)
 {
 	ATLASSERT(hPopupMenu);
 
@@ -11146,7 +11146,7 @@ BOOL ToolBar::DoTrackPopupMenu(HMENU hPopupMenu, UINT flags, int x, int y, LPTPM
 
 	menuModeState.selectedMenuItemHasSubMenu = FALSE;
 	menuModeState.menuIsActive = TRUE;
-	BOOL ret = TrackPopupMenuEx(hPopupMenu, flags, x, y, *this, pParams);
+	BOOL ret = TrackPopupMenuEx(hPopupMenu, trackPopupMenuFlags, x, y, *this, pParams);
 	menuModeState.menuIsActive = FALSE;
 
 	UnhookWindowsHookEx(hCBTHook);
@@ -11173,9 +11173,9 @@ int ToolBar::HitTest(LONG x, LONG y, UINT* pFlags, HWND hWndToUse/* = NULL*//*, 
 	}
 	ATLASSERT(::IsWindow(hWndToUse));
 
-	UINT flags = 0;
+	UINT hitTestFlags = 0;
 	if(pFlags) {
-		flags = *pFlags;
+		hitTestFlags = *pFlags;
 	}
 	POINT hitTestInfo = {x, y};
 	UINT hitTestInfoFlags = 0;
@@ -11212,11 +11212,11 @@ int ToolBar::HitTest(LONG x, LONG y, UINT* pFlags, HWND hWndToUse/* = NULL*//*, 
 		}
 	}
 
-	flags = hitTestInfoFlags;
+	hitTestFlags = hitTestInfoFlags;
 	if(pFlags) {
-		*pFlags = flags;
+		*pFlags = hitTestFlags;
 	}
-	/*TODO: if(!ignoreBoundingBoxDefinition && ((properties.buttonBoundingBoxDefinition & flags) != flags)) {
+	/*TODO: if(!ignoreBoundingBoxDefinition && ((properties.buttonBoundingBoxDefinition & hitTestFlags) != hitTestFlags)) {
 		buttonIndex = -1;
 	}*/
 	return buttonIndex;

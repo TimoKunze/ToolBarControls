@@ -6227,7 +6227,7 @@ protected:
 	/// \brief <em>Displays the specified popup menu at the specified position with the specified parameters</em>
 	///
 	/// \param[in] hPopupMenu The menu to display.
-	/// \param[in] flags The flags to pass to \c TrackPopupMenuEx.
+	/// \param[in] trackPopupMenuFlags The flags to pass to \c TrackPopupMenuEx.
 	/// \param[in] x The x-coordinate (in pixels) of the menu's proposed position relative to the screen's
 	///            upper-left corner.
 	/// \param[in] y The y-coordinate (in pixels) of the menu's proposed position relative to the screen's
@@ -6238,7 +6238,7 @@ protected:
 	///
 	/// \sa get_MenuMode, DoPopupMenu,
 	///     <a href="https://msdn.microsoft.com/en-us/library/ms648003.aspx">TrackPopupMenuEx</a>
-	BOOL DoTrackPopupMenu(HMENU hPopupMenu, UINT flags, int x, int y, LPTPMPARAMS pParams = NULL);
+	BOOL DoTrackPopupMenu(HMENU hPopupMenu, UINT trackPopupMenuFlags, int x, int y, LPTPMPARAMS pParams = NULL);
 	//@}
 	//////////////////////////////////////////////////////////////////////
 

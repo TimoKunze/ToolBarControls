@@ -2842,11 +2842,11 @@ STDMETHODIMP ReBar::HitTest(OLE_XPOS_PIXELS x, OLE_YPOS_PIXELS y, HitTestConstan
 	}
 
 	if(IsWindow()) {
-		UINT flags = static_cast<UINT>(*pHitTestDetails);
-		int bandIndex = HitTest(x, y, &flags/*, TRUE*/);
+		UINT hitTestFlags = static_cast<UINT>(*pHitTestDetails);
+		int bandIndex = HitTest(x, y, &hitTestFlags/*, TRUE*/);
 
 		if(pHitTestDetails) {
-			*pHitTestDetails = static_cast<HitTestConstants>(flags);
+			*pHitTestDetails = static_cast<HitTestConstants>(hitTestFlags);
 		}
 		ClassFactory::InitReBarBand(bandIndex, this, IID_IReBarBand, reinterpret_cast<LPUNKNOWN*>(ppHitBand));
 		return S_OK;
@@ -3748,7 +3748,7 @@ LRESULT ReBar::OnGetBandInfo(UINT message, WPARAM wParam, LPARAM lParam, BOOL& /
 
 	if(lr) {
 		BOOL chevronVisible = FALSE;
-		REBARBANDINFO band = {0};
+		ZeroMemory(&band, RunTimeHelper::SizeOf_REBARBANDINFO());
 		band.cbSize = RunTimeHelper::SizeOf_REBARBANDINFO();
 		band.fMask = RBBIM_CHILD | RBBIM_IDEALSIZE | RBBIM_STYLE;
 		if(SendMessage(RB_GETBANDINFO, wParam, reinterpret_cast<LPARAM>(&band))) {
@@ -6009,11 +6009,11 @@ int ReBar::HitTest(LONG x, LONG y, UINT* pFlags/*, BOOL ignoreBoundingBoxDefinit
 {
 	ATLASSERT(IsWindow());
 
-	UINT flags = 0;
+	UINT hitTestFlags = 0;
 	if(pFlags) {
-		flags = *pFlags;
+		hitTestFlags = *pFlags;
 	}
-	RBHITTESTINFO hitTestInfo = {{x, y}, flags, 0};
+	RBHITTESTINFO hitTestInfo = {{x, y}, hitTestFlags, 0};
 	int bandIndex = -1;
 
 	POINT pt = {x, y};
@@ -6037,11 +6037,11 @@ int ReBar::HitTest(LONG x, LONG y, UINT* pFlags/*, BOOL ignoreBoundingBoxDefinit
 		}
 	}
 
-	flags = hitTestInfo.flags;
+	hitTestFlags = hitTestInfo.flags;
 	if(pFlags) {
-		*pFlags = flags;
+		*pFlags = hitTestFlags;
 	}
-	/*TODO: if(!ignoreBoundingBoxDefinition && ((properties.bandBoundingBoxDefinition & flags) != flags)) {
+	/*TODO: if(!ignoreBoundingBoxDefinition && ((properties.bandBoundingBoxDefinition & hitTestFlags) != hitTestFlags)) {
 		bandIndex = -1;
 	}*/
 	return bandIndex;
