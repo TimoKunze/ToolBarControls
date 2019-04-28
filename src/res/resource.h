@@ -13,7 +13,7 @@
 #define VERSION_BUILD																258
 #define STRFILEVERSION															"1.3.5.258"
 #define STRPRODUCTVERSION														"1.3"
-#define STRTIMESTAMP																"2019/04/28 17:53:33"
+#define STRTIMESTAMP																"2019/04/28 17:55:40"
 
 #define IDB_REBAR																		1
 #define IDB_TOOLBAR																	2
