@@ -78,7 +78,7 @@ BEGIN
 #else
             VALUE "InternalName", "TBarCtlsA.ocx"
 #endif
-            VALUE "LegalCopyright", "Copyright (C) 2011-2018 Timo ""TimoSoft"" Kunze"
+            VALUE "LegalCopyright", "Copyright (C) 2011-2019 Timo ""TimoSoft"" Kunze"
 #ifdef _UNICODE
             VALUE "OriginalFilename", "TBarCtlsU.ocx"
 #else
